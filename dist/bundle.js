@@ -131,6 +131,66 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 
 /***/ }),
 
+/***/ "./src/js/Button.js":
+/*!**************************!*\
+  !*** ./src/js/Button.js ***!
+  \**************************/
+/*! exports provided: Button */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Button\", function() { return Button; });\nfunction _typeof(obj) { \"@babel/helpers - typeof\"; if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nvar Button = function Button() {\n  var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : \"Search\";\n  var className = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';\n  var url = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';\n  var type = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';\n\n  function showClassName(className) {\n    if (className === undefined) {\n      return '';\n    } else if (typeof className === 'string') {\n      return className;\n    } else if (_typeof(className) === 'object') {\n      console.log(className.join(' '));\n      return className.join(' ');\n    } else {\n      return console.log(\"damned\");\n    }\n\n    ;\n  }\n\n  ;\n  return \"<a class=\\\"\".concat(showClassName(className), \"\\\" type=\\\"\").concat(type, \"\\\" href=\\\"\").concat(url, \"\\\">\").concat(name, \"</a>\");\n};\n\n\n\n//# sourceURL=webpack:///./src/js/Button.js?");
+
+/***/ }),
+
+/***/ "./src/js/Home.js":
+/*!************************!*\
+  !*** ./src/js/Home.js ***!
+  \************************/
+/*! exports provided: Home */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Home\", function() { return Home; });\nvar Home = function Home() {\n  var argument = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : \"\";\n  console.log(\"Home\", argument);\n};\n\n\n\n//# sourceURL=webpack:///./src/js/Home.js?");
+
+/***/ }),
+
+/***/ "./src/js/PageDetail.js":
+/*!******************************!*\
+  !*** ./src/js/PageDetail.js ***!
+  \******************************/
+/*! exports provided: PageDetail */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"PageDetail\", function() { return PageDetail; });\nvar PageDetail = function PageDetail(argument) {\n  var preparePage = function preparePage() {\n    var cleanedArgument = argument.replace(/\\s+/g, \"-\");\n\n    var fetchGame = function fetchGame(url, argument) {\n      var finalURL = url + argument;\n      fetch(\"\".concat(finalURL)).then(function (response) {\n        return response.json();\n      }).then(function (response) {\n        var name = response.name,\n            released = response.released,\n            description = response.description;\n        var articleDOM = document.querySelector(\".page-detail .article\");\n        articleDOM.querySelector(\"h1.title\").innerHTML = name;\n        articleDOM.querySelector(\"p.release-date span\").innerHTML = released;\n        articleDOM.querySelector(\"p.description\").innerHTML = description;\n      });\n    };\n\n    fetchGame(\"https://api.rawg.io/api/games/\", cleanedArgument);\n  };\n\n  var render = function render() {\n    pageContent.innerHTML = \"\\n      <section class=\\\"page-detail\\\">\\n        <div class=\\\"article\\\">\\n          <h1 class=\\\"title\\\"></h1>\\n          <p class=\\\"release-date\\\">Release date : <span></span></p>\\n          <p class=\\\"description\\\"></p>\\n        </div>\\n      </section>\\n    \";\n    preparePage();\n  };\n\n  render();\n};\n\n\n\n//# sourceURL=webpack:///./src/js/PageDetail.js?");
+
+/***/ }),
+
+/***/ "./src/js/PageList.js":
+/*!****************************!*\
+  !*** ./src/js/PageList.js ***!
+  \****************************/
+/*! exports provided: PageList */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"PageList\", function() { return PageList; });\n/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Button */ \"./src/js/Button.js\");\n\n\nvar PageList = function PageList() {\n  var argument = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : \"\";\n\n  var addHoverToCard = function addHoverToCard(articles) {\n    var gamesImg = document.querySelectorAll(\".cardGame-imgContainer > img\");\n    gamesImg.forEach(function (img, index) {\n      img.addEventListener(\"mouseover\", function () {\n        var article = articles[index];\n        console.log(article);\n        img.style.opacity = 0.2;\n        img.parentElement.innerHTML += \"\\n          <div class=\\\"card-img-overlay\\\">\\n            <p class=\\\"card-text\\\">\".concat(article.released, \"</p>\\n            <p class=\\\"card-text\\\">\").concat(article.rating, \"/\").concat(article.rating_top, \" - \").concat(article.reviews_count, \" votes</p>\\n            <p class=\\\"card-text small\\\">\").concat(article.tags.map(function (tag) {\n          return tag.name;\n        }), \"</p>\\n          </div>\\n        \");\n        /*const imgOverlay = document.querySelector(\".card-img-overlay\");\n        imgOverlay.addEventListener(\"mouseout\", () => {\n          imgOverlay.parentNode.removeChild(imgOverlay);\n        });*/\n      });\n    });\n  };\n\n  var preparePage = function preparePage() {\n    var cleanedArgument = argument.replace(/\\s+/g, \"-\");\n    var articles = \"\";\n\n    var fetchList = function fetchList(url, argument) {\n      var finalURL = url;\n\n      if (argument) {\n        finalURL = url + \"&search=\" + argument;\n      } //console.log(finalURL);\n\n\n      fetch(\"\".concat(finalURL)).then(function (response) {\n        return response.json();\n      }).then(function (response) {\n        response.results.forEach(function (article) {\n          articles += \"\\n                <div class=\\\"cardGame mb-3\\\">\\n                  <div class=\\\"card cardGame-imgContainer\\\">\\n                    <img class=\\\"card-img\\\" src=\".concat(article.background_image, \" alt=\").concat(article.name, \">\\n                  </div>\\n                  <div class=\\\"card-body\\\">\\n                    <h5 class=\\\"card-title\\\">\").concat(article.name, \"</h5>\\n                    <p class=\\\"card-text\\\">\").concat(article.released, \"</p>\\n                    <a href = \\\"#pagedetail/\").concat(article.id, \"\\\">\").concat(article.id, \"</a>\\n                    \").concat(Object(_Button__WEBPACK_IMPORTED_MODULE_0__[\"Button\"])('Read more', \"btn btn-primary\", \"#pagedetail/\".concat(article.id)), \"\\n                  </div>\\n                </div>\\n            \");\n        });\n        document.querySelector(\".page-list .articles\").innerHTML = articles;\n        addHoverToCard(response.results);\n      });\n    };\n\n    fetchList(\"https://api.rawg.io/api/games?page_size=9\", cleanedArgument);\n  };\n\n  var render = function render() {\n    pageContent.innerHTML = \"\\n      <section class=\\\"page-list\\\">\\n        <div class=\\\"articles\\\">...loading</div>\\n      </section>\\n    \";\n    preparePage();\n  };\n\n  render();\n};\n\n\n\n//# sourceURL=webpack:///./src/js/PageList.js?");
+
+/***/ }),
+
+/***/ "./src/js/SearchForm.js":
+/*!******************************!*\
+  !*** ./src/js/SearchForm.js ***!
+  \******************************/
+/*! exports provided: SearchForm */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"SearchForm\", function() { return SearchForm; });\n/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Button */ \"./src/js/Button.js\");\n\n\nvar SearchForm = function SearchForm(targetedElement) {\n  var target = document.querySelector(targetedElement);\n  var searchedGame = '';\n  target.innerHTML = \"\\n    <form class=\\\"form-inline my-2 my-lg-0\\\">\\n      <input class=\\\"form-control mr-sm-2\\\" type=\\\"search\\\" placeholder=\\\"Search for a game\\\" aria-label=\\\"Search\\\">\\n      \".concat(Object(_Button__WEBPACK_IMPORTED_MODULE_0__[\"Button\"])(\"Search\", \"btn btn-outline-success my-2 my-sm-0\", '#pagelist/', \"submit\"), \"\\n    </form>\\n  \");\n  var a = document.querySelector(\"form > a\");\n  var input = document.querySelector(\"form > input\");\n  a.addEventListener(\"click\", handleFormSubmit);\n  input.addEventListener(\"keydown\", handleInput);\n\n  function handleFormSubmit(e) {\n    //e.preventDefault();\n    console.log(e);\n    console.log(input.value);\n    console.log(window.location); //searchedGame = '';\n  }\n\n  ;\n\n  function handleInput(e) {\n    searchedGame += e.key;\n    console.log(document.querySelector(\"form > a\").href = \"#pagelist/\" + searchedGame); //console.log(searchedGame);\n  }\n\n  ;\n};\n\n\n\n//# sourceURL=webpack:///./src/js/SearchForm.js?");
+
+/***/ }),
+
 /***/ "./src/js/index.js":
 /*!*************************!*\
   !*** ./src/js/index.js ***!
@@ -139,7 +199,19 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sass_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../sass/styles.scss */ \"./src/sass/styles.scss\");\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.js\");\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(bootstrap__WEBPACK_IMPORTED_MODULE_1__);\n\n\nconsole.log(\"test\");\n\n//# sourceURL=webpack:///./src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./routes */ \"./src/js/routes.js\");\n/* harmony import */ var _SearchForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SearchForm */ \"./src/js/SearchForm.js\");\n/* harmony import */ var _sass_styles_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../sass/styles.scss */ \"./src/sass/styles.scss\");\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.js\");\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(bootstrap__WEBPACK_IMPORTED_MODULE_3__);\n//import { PageDetail } from './PageDetail';\n\n\n\n\nvar pageArgument;\n\nvar setRoute = function setRoute() {\n  var pageArgument = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : \"\";\n  var path = window.location.hash.substring(1).split(\"/\");\n  pageArgument = path[1] || \"\";\n  var pageContent = document.getElementById(\"pageContent\");\n  Object(_SearchForm__WEBPACK_IMPORTED_MODULE_1__[\"SearchForm\"])(\"nav div:last-child\");\n  _routes__WEBPACK_IMPORTED_MODULE_0__[\"routes\"][path[0]](pageArgument);\n  console.log(path[0]);\n  console.log(pageArgument);\n  console.log(pageContent);\n  console.log(_routes__WEBPACK_IMPORTED_MODULE_0__[\"routes\"]);\n  return true;\n};\n\nconsole.log(pageArgument);\nwindow.addEventListener(\"hashchange\", function () {\n  return setRoute();\n});\nwindow.addEventListener(\"DOMContentLoaded\", function () {\n  return setRoute();\n});\n\n//# sourceURL=webpack:///./src/js/index.js?");
+
+/***/ }),
+
+/***/ "./src/js/routes.js":
+/*!**************************!*\
+  !*** ./src/js/routes.js ***!
+  \**************************/
+/*! exports provided: routes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"routes\", function() { return routes; });\n/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Home */ \"./src/js/Home.js\");\n/* harmony import */ var _PageList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PageList */ \"./src/js/PageList.js\");\n/* harmony import */ var _PageDetail__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PageDetail */ \"./src/js/PageDetail.js\");\n\n\n\nvar routes = {\n  \"\": _Home__WEBPACK_IMPORTED_MODULE_0__[\"Home\"],\n  \"pagelist\": _PageList__WEBPACK_IMPORTED_MODULE_1__[\"PageList\"],\n  \"pagedetail\": _PageDetail__WEBPACK_IMPORTED_MODULE_2__[\"PageDetail\"]\n};\n\n\n//# sourceURL=webpack:///./src/js/routes.js?");
 
 /***/ }),
 

@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Webpack</title>
+    <title>Basic routing</title>
     <link rel="stylesheet" href="dist/bundle.css" />
     <script src="dist/bundle.js"></script>
   </head>
+
   <body>
-    <p class="text-center">test this is my paragraph</p>
-    <script src="src/js/index.js"></script>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div>
+        <a class="nav-item mx-2" href="#">Home</a>
+        <a class="nav-item mx-2" href="#pagelist">PageList</a>
+        <a class="nav-item mx-2" href="#pagelist/borderlands">PageList borderlands</a>
+      </div>
+      <div><div>
+    </nav>
+
+    <section id="pageContent">Choissez un lien</section>
+
+    <script src="src/js/search.js"></script>
+    <script type="module" src="src/js/index.js"></script>
   </body>
 </html>

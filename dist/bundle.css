@@ -9897,11 +9897,51 @@ h3 {
   font-family: "Big Noodles";
   src: url(fonts/e2ebffa44fbb63381589b4c62164a7a7.ttf);
 }
+h1, h2, a {
+  color: #d10a33;
+}
+
 p {
-  color: #ff1414;
-  font-family: "Big Noodles";
+  color: white;
 }
 
 body {
-  background-image: url(images/57db54f4bb453e3758cc244aab1f81a0.jpg);
+  background-color: #191919;
 }
+
+.articles {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #191919;
+}
+
+.cardGame {
+  color: #d10a33;
+  max-width: 20em;
+  margin: 2em;
+}
+
+.cardGame-imgContainer {
+  max-height: 10em;
+  overflow: hidden;
+}
+
+.cardGame-imgContainer img {
+  height: 100%;
+}
+
+.card-text {
+  margin-bottom: 0.25rem;
+}
+
+.small {
+  font-size: 0.5rem;
+}
+
+/*.cardGame-imgContainer:hover img {
+  opacity: 0.2;
+}*/

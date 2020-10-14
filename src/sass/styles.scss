@@ -1,17 +1,57 @@
 @import "~bootstrap/scss/bootstrap";
 
-$red: rgb(255, 20, 20);
+$red: #d10a33;
+$black: #191919;
 
 @font-face {
   font-family: "Big Noodles";
   src: url("../fonts/big_noodle_titling.ttf");
 }
 
-p {
+h1, h2, a {
   color: $red;
-  font-family: "Big Noodles";
+}
+
+p {
+  color: white;
+  //font-family: "Big Noodles";
 }
 
 body {
-  background-image: url("../images/fablab.jpg");
+  background-color: $black;
 }
+
+.articles {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: $black;
+}
+
+.cardGame {
+  color: $red;
+  max-width: 20em;
+  margin: 2em;
+}
+
+.cardGame-imgContainer {
+  max-height: 10em;
+  overflow: hidden;
+}
+
+.cardGame-imgContainer img {
+  height:100%;
+}
+
+.card-text {
+  margin-bottom: 0.25rem;
+}
+.small {
+  font-size: 0.5rem;
+}
+/*.cardGame-imgContainer:hover img {
+  opacity: 0.2;
+}*/
