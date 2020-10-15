@@ -1,4 +1,4 @@
-const Button = (name = "Search", className = '', url = '', type = '') => {
+const Button = (name = "Search", className = '', url = '') => {
 
   function showClassName(className) {
     if (className === undefined) {
@@ -13,7 +13,7 @@ const Button = (name = "Search", className = '', url = '', type = '') => {
     };
   };
 
-  return `<a class="${showClassName(className)}" type="${type}" href="${url}">${name}</a>`;
+  return `<a class="${showClassName(className)}" href="${url}">${name}</a>`;
 };
 
 export { Button };

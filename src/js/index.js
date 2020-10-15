@@ -16,13 +16,8 @@ const setRoute = (pageArgument = "") => {
 
   routes[path[0]](pageArgument);
 
-  console.log(path[0]);
-  console.log(pageArgument);
-  console.log(pageContent);
-  console.log(routes);
   return true;
 };
 
-console.log(pageArgument);
 window.addEventListener("hashchange", () => setRoute());
 window.addEventListener("DOMContentLoaded", () => setRoute());

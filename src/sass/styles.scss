@@ -27,6 +27,10 @@ body {
   flex-wrap: wrap;
 }
 
+.bg-dark {
+  background-color: $black !important;
+}
+
 .card {
   background-color: $black;
 }
@@ -38,7 +42,7 @@ body {
 }
 
 .cardGame-imgContainer {
-  max-height: 10em;
+  max-height: 30em;
   overflow: hidden;
 }
 
@@ -49,6 +53,12 @@ body {
 .card-text {
   margin-bottom: 0.25rem;
 }
+
+.page-list {
+  display: flex;
+  flex-direction: column;
+}
+
 .small {
   font-size: 0.5rem;
 }

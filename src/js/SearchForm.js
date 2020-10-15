@@ -7,28 +7,17 @@ const SearchForm = (targetedElement) => {
   target.innerHTML = `
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search for a game" aria-label="Search">
-      ${Button("Search", "btn btn-outline-success my-2 my-sm-0", '#pagelist/', "submit")}
+      ${Button("Search", "btn btn-outline-danger my-2 my-sm-0", '')}
     </form>
   `;
 
   const a = document.querySelector("form > a");
   const input = document.querySelector("form > input");
-  a.addEventListener("click", handleFormSubmit);
-  input.addEventListener("keydown", handleInput);
+  a.addEventListener("click", handleClick);
 
-  function handleFormSubmit(e) {
-    //e.preventDefault();
-    console.log(e);
-    console.log(input.value);
-    console.log(window.location);
-    //searchedGame = '';
-  };
-
-  function handleInput(e) {
-
-    searchedGame += e.key;
-    console.log(document.querySelector("form > a").href = "#pagelist/" + searchedGame);
-    //console.log(searchedGame);
+  function handleClick(e) {
+    e.preventDefault();
+    window.location.hash = "#pagelist/" + input.value;
   };
 };
 

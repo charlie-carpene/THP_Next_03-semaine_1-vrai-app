@@ -1,6 +1,8 @@
 import { Button } from './Button';
 
 const PageList = (argument = "") => {
+  let pageNumber = 1;
+
   const addHoverToCard = (articles) =>  {
     const gamesImg = document.querySelectorAll(".cardGame-imgContainer > img");
     gamesImg.forEach((img, index) => {
@@ -33,8 +35,6 @@ const PageList = (argument = "") => {
         finalURL = url + "&search=" + argument;
       }
 
-      //console.log(finalURL);
-
       fetch(`${finalURL}`)
         .then((response) => response.json())
         .then((response) => {
@@ -47,18 +47,31 @@ const PageList = (argument = "") => {
                   <div class="card-body">
                     <h5 class="card-title">${article.name}</h5>
                     <p class="card-text">${article.released}</p>
-                    <a href = "#pagedetail/${article.id}">${article.id}</a>
-                    ${Button('Read more', "btn btn-primary", `#pagedetail/${article.id}`)}
+                    ${Button('Read more', "btn btn-outline-primary", `#pagedetail/${article.id}`)}
                   </div>
                 </div>
             `;
           });
           document.querySelector(".page-list .articles").innerHTML = articles;
           addHoverToCard(response.results);
+          showMoreGame();
         });
     };
+    fetchList(`https://api.rawg.io/api/games?page=${pageNumber}&page_size=9`, cleanedArgument);
+  };
 
-    fetchList("https://api.rawg.io/api/games?page_size=9", cleanedArgument);
+  const showMoreGame = () => {
+    document.querySelector(".page-list").innerHTML += `${Button('Show more', 'btn btn-primary align-self-center', '')}`;
+
+    const a = document.querySelector("section > a:last-child");
+    a.addEventListener("click", handleClick);
+
+    function handleClick(e) {
+      e.preventDefault();
+      pageNumber += 1;
+      document.querySelector(".page-list .articles").innerHTML += preparePage();
+    };
+
   };
 
   const render = () => {

@@ -9915,6 +9915,10 @@ body {
   flex-wrap: wrap;
 }
 
+.bg-dark {
+  background-color: #191919 !important;
+}
+
 .card {
   background-color: #191919;
 }
@@ -9926,7 +9930,7 @@ body {
 }
 
 .cardGame-imgContainer {
-  max-height: 10em;
+  max-height: 30em;
   overflow: hidden;
 }
 
@@ -9936,6 +9940,11 @@ body {
 
 .card-text {
   margin-bottom: 0.25rem;
+}
+
+.page-list {
+  display: flex;
+  flex-direction: column;
 }
 
 .small {
